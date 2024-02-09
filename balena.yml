@@ -1,0 +1,5 @@
+name: BALENA_TS
+description: >-
+   Connect your IOT to tailscale and make it route traffic
+type: sw.application
+version: 1.0.0
