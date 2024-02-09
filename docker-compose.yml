@@ -1,0 +1,22 @@
+version: '2'
+volumes:
+  ts1:
+  ts2:
+services:
+  tailscale:
+    image: tailscale/tailscale:latest
+    container_name: tailscale
+    volumes:
+      - ts1:/var/lib
+      - ts2:/dev/net/tun
+    cap_add:
+      - net_admin
+      - sys_module
+    environment:
+      - TS_STATE_DIR=/var/lib
+      - TS_AUTHKEY=(!!Note: Replace Your Own Key here!!)
+      - TS_EXTRA_ARGS=--advertise-exit-node
+      - TS_HOSTNAME=raspberry-pi
+    privileged: true
+    restart: always
+    network_mode: "host"
